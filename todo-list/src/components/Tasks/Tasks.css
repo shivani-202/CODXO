@@ -1,0 +1,53 @@
+.task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 80vh;
+  margin: 20px auto;
+}
+.filter-tasks {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 60vh;
+  width: 30%;
+  border: 1px solid #18181c;
+  border-radius: 20px;
+  background-color: #18181c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.tasks-filter-btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  background: none;
+}
+.title {
+  margin: 0;
+  padding-bottom: 10px;
+  color: #7881c8;
+  font-size: large;
+  font-weight: 500;
+  background: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.task-btn {
+  background: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.all-tasks .starred-tasks {
+  background: none;
+  color: white;
+  border: none;
+  height: 40px;
+  width: 80%;
+}
