@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Tasks.css";
 import CreateTask from "../Pages/CreateTask";
 const Tasks = () => {
   const [modal, setModal] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    setTasks(storedTasks);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const toggle = () => {
     setModal(!modal);
