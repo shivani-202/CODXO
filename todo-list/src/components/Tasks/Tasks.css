@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  /* flex-wrap: wrap; */
 }
 .sidebar {
   flex: 0 0 250px;
@@ -89,7 +88,7 @@
     align-items: center;
   }
   .sidebar {
-    flex: 0 0 80;
+    flex: 0 0 80%;
     height: auto;
     margin-bottom: 20px;
   }
@@ -98,4 +97,56 @@
     flex: 0 0 80%;
     height: 60vh;
   }
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  background-color: #5c78d2;
+  color: #e0e0e0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  width: 100%; /* Ensure the task item takes full width */
+}
+
+.task-content {
+  margin-left: 10px;
+  background: none;
+  flex-grow: 1; /* Allow the task content to take up the remaining space */
+}
+
+.task-name {
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #e0e0e0;
+}
+
+.task-desc {
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #e0e0e0;
+}
+
+.task-item.completed .task-name,
+.task-item.completed .task-desc {
+  text-decoration: line-through;
+}
+
+.task-actions {
+  display: flex;
+  background: none;
+  align-items: center;
+  margin-left: auto; /* Ensure the actions are aligned to the right */
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  margin-left: 10px;
 }
