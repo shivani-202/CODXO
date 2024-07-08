@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Tasks.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import CreateTask from "../Pages/CreateTask";
 const Tasks = () => {
   const [modal, setModal] = useState(false);
@@ -84,13 +86,29 @@ const Tasks = () => {
                     onChange={() => toggleTaskCompletion(index)}
                   />
                   <div className="task-content">
-                    <h5 className="task-name">{task.taskName}</h5>
-                    <p className="task-desc">{task.description}</p>
+                    <div className="task-content-text">
+                      <h5 className="task-name">{task.taskName}</h5>
+                      <p className="task-desc">{task.description}</p>
+                    </div>
                     <div className="task-actions">
                       <button onClick={() => toggleTaskStar(index)}>
-                        {tasks.starred ? "★" : "☆"}
+                        {task.starred ? (
+                          <FontAwesomeIcon
+                            className="icon"
+                            icon={faStar}
+                            style={{ color: "#827e8b" }}
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            className="icon"
+                            icon={faStar}
+                            style={{
+                              "--fa-primary-color": "#827e8b",
+                              "--fa-secondary-color": "#827e8b",
+                            }}
+                          />
+                        )}
                       </button>
-                      <button onClick={() => deleteTask(index)}>🗑️</button>
                     </div>
                   </div>
                 </div>

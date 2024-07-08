@@ -114,9 +114,13 @@
 .task-content {
   margin-left: 10px;
   background: none;
+  display: flex;
+  justify-content: space-between;
   flex-grow: 1; /* Allow the task content to take up the remaining space */
 }
-
+.task-content-text {
+  background: none;
+}
 .task-name {
   margin: 0;
   padding: 0;
@@ -149,4 +153,11 @@
   color: #e0e0e0;
   cursor: pointer;
   margin-left: 10px;
+}
+FontAwesomeIcon {
+  background: none;
+}
+.icon {
+  background: none;
+  background-color: transparent;
 }

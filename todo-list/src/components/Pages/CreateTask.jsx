@@ -6,18 +6,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const CreateTask = ({ modal, toggle, addTask }) => {
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!taskName.trim()) newErrors.taskName = "Task name is required";
+    if (!description.trim()) newErrors.description = "Description is required";
+    return newErrors;
+  };
 
   const handleCreateTask = () => {
-    const newTask = {
-      taskName: taskName,
-      description: description,
-    };
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length === 0) {
+      const newTask = {
+        taskName: taskName,
+        description: description,
+      };
 
-    addTask(newTask);
+      addTask(newTask);
 
-    setTaskName("");
-    setDescription("");
-    toggle();
+      setTaskName("");
+      setDescription("");
+      toggle();
+    } else {
+      setErrors(validationErrors);
+    }
   };
 
   return (
@@ -28,7 +41,6 @@ const CreateTask = ({ modal, toggle, addTask }) => {
       <ModalBody>
         <form>
           <div className="form-group title">
-            {/* <label>Title</label> */}
             <input
               type="text"
               className="form-control"
@@ -36,9 +48,9 @@ const CreateTask = ({ modal, toggle, addTask }) => {
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
             />
+            {errors.taskName && <div className="error">{errors.taskName}</div>}
           </div>
           <div className="form-group description">
-            {/* <label>Description</label> */}
             <textarea
               rows="5"
               className="form-control"
@@ -46,15 +58,17 @@ const CreateTask = ({ modal, toggle, addTask }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            {errors.description && (
+              <div className="error">{errors.description}</div>
+            )}
           </div>
         </form>
-        <div className="btn">
-          <Button className="create " onClick={handleCreateTask}>
-            Create
-          </Button>
-          <Button className="cancel" onClick={toggle}>
-            Cancel
-          </Button>
+        <div className="btn-container">
+          <div className="create-btn">
+            <Button className="create" onClick={handleCreateTask}>
+              Create
+            </Button>
+          </div>
         </div>
       </ModalBody>
     </Modal>
